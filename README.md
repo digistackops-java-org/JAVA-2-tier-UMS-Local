@@ -75,6 +75,8 @@ CREATE DATABASE employeedb;
 Create the "appuser" user with password and gibe full access to employeeDb and its tables
 ```
 CREATE USER appuser WITH PASSWORD 'P@55Word';
+```
+```
 GRANT ALL PRIVILEGES ON DATABASE employeedb TO appuser;
 ```
 Switch to "employedb"
