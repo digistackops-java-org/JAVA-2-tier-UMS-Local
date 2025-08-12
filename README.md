@@ -120,6 +120,7 @@ SELECT * FROM employee;
 
 
 # Application server Setup
+Create "t2.micro" EC2 Instance and open port "8080" for Tomcat Applicaion Server
 
 ## Refer "Tools_setup.md" for Installing Required Tools Before execute these steps
 
@@ -137,6 +138,17 @@ sudo git clone https://github.com/techizone-Small-Project-org/JAVA-2-tier-UMS-Ap
 ```
 cd JAVA-2-tier-UMS-App
 sudo git checkout 01-Local-setup-Dev
+```
+### Edit your DB credentials in application.properties file
+```
+sudo vim src/main/resources/application.properties
+```
+Edit HERE your DB and Host Details
+```
+spring.datasource.url=jdbc:postgresql://<DB-Private-IP>:5432/<Your-DB-Name>
+spring.datasource.username=<User-name>
+spring.datasource.password=<Password>
+spring.datasource.driver-class-name=org.postgresql.Driver
 ```
 
 ### Build the Artifact
