@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-@WebServlet("/DeleteEmployeeServlet")
+@WebServlet("/employee/DeleteEmployeeServlet")
 public class DeleteEmployeeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
