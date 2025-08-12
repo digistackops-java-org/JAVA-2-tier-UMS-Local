@@ -109,7 +109,7 @@ GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO appuser;
 
 Check table created or Not under "employedb"
 ```
-SELECT * FROM employees;
+SELECT * FROM employee;
 ```
 <img width="346" height="66" alt="image" src="https://github.com/user-attachments/assets/c99e52bb-d44b-4de9-b1d8-a51aa4b07b84" />
 
