@@ -1,6 +1,7 @@
 package com.employeemanagement.servlet;
 
 import com.employeemanagement.dao.EmployeeDAO;
+import com.employeemanagement.model.Employee;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
