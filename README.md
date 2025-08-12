@@ -172,6 +172,8 @@ sudo cp -r target/*.war /opt/tomcat/webapps
 http://<AWS-Public-IP>:8080/SSO
 ```
 <img width="668" height="319" alt="image" src="https://github.com/user-attachments/assets/36d5e632-8591-47b1-ba97-4804c21b47ef" />
+<img width="625" height="673" alt="image" src="https://github.com/user-attachments/assets/deff83f2-da79-4561-a295-21899b8f510c" />
+<img width="1024" height="484" alt="image" src="https://github.com/user-attachments/assets/b588ee23-0fd3-44c1-9b88-f8d0a04a6947" />
 
 
 ### To Run the Test
