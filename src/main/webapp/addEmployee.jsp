@@ -71,7 +71,7 @@
         <div class="alert alert-danger">${error}</div>
       </c:if>
       <button type="submit" class="btn btn-primary">Add Employee</button>
-      <a href="${pageContext.requesindex.jsp" class="btn btn-secondary">Cancel</a>
+      <a href="${pageContext.request.contextPath}/employeeList.jsp" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
 </body>
