@@ -50,7 +50,7 @@
 <body>
   <div class="container">
     <h2>Add Employee</h2>
-    <form action="AddEmployeeServlet" method="post">
+    <form action="${pageContext.request.contextPath}/add" method="post">
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" name="name" id="name" class="form-control" required>
@@ -71,7 +71,7 @@
         <div class="alert alert-danger">${error}</div>
       </c:if>
       <button type="submit" class="btn btn-primary">Add Employee</button>
-      <a href="index.jsp" class="btn btn-secondary">Cancel</a>
+      <a href="${pageContext.requesindex.jsp" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
 </body>
