@@ -97,3 +97,42 @@ SELECT * FROM employees;
 ```
 <img width="346" height="66" alt="image" src="https://github.com/user-attachments/assets/c99e52bb-d44b-4de9-b1d8-a51aa4b07b84" />
 
+
+# Application server Setup
+
+## Refer "Tools_setup.md" for Installing Required Tools Before execute these steps
+
+### Install Git
+```
+sudo yum install git -y
+```
+#### To start this application first you can get the code using below url
+##### Clone the Repo
+
+```
+sudo git clone https://github.com/techizone-Small-Project-org/JAVA-2-tier-UMS-App.git
+```
+### Switch to Local-Setup Branch
+```
+cd JAVA-2-tier-UMS-App
+sudo git checkout 01-Local-setup-Dev
+```
+
+### Build the Artifact
+```
+mvn clean package
+```
+### Deploy these Artifact to Tomcat-Dev
+```
+sudo cp -r target/*.war /opt/tomcat/webapps
+```
+
+### Access Your App in Browser
+```
+http://<AWS-Public-IP>:8080/employee
+```
+
+### To Run the Test
+```
+mvn test
+```
