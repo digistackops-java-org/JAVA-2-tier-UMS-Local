@@ -6,7 +6,6 @@
   <title>Employee List</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Styling from earlier */
     body {
       background: linear-gradient(135deg, #71b7e6, #9b59b6);
       min-height: 100vh;
@@ -29,44 +28,21 @@
     table tbody tr:hover {
       background: rgba(255,255,255,0.1);
     }
-    .btn-primary {
-      background: #8e44ad;
-      border: none;
-    }
-    .btn-primary:hover {
-      background: #732d91;
-    }
-    .btn-danger {
-      background: #c0392b;
-      border: none;
-      color: white;
-    }
-    .btn-danger:hover {
-      background: #992d22;
-    }
-    .btn-success {
-      background: #27ae60;
-      border: none;
-    }
-    .btn-success:hover {
-      background: #1e8449;
-    }
-    .btn-secondary {
-      background: #34495e;
-      border: none;
-      color: #ccc;
-    }
-    .btn-secondary:hover {
-      background: #2c3e50;
-      color: #fff;
-    }
+    .btn-primary { background: #8e44ad; border: none; }
+    .btn-primary:hover { background: #732d91; }
+    .btn-danger { background: #c0392b; border: none; color: white; }
+    .btn-danger:hover { background: #992d22; }
+    .btn-success { background: #27ae60; border: none; }
+    .btn-success:hover { background: #1e8449; }
+    .btn-secondary { background: #34495e; border: none; color: #ccc; }
+    .btn-secondary:hover { background: #2c3e50; color: #fff; }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Employee List</h2>
-    <a href="index.jsp" class="btn btn-secondary mb-3">Home</a>
-    <a href="addEmployee.jsp" class="btn btn-success mb-3 float-end">Add New Employee</a>
+    <a href="${pageContext.request.contextPath}/index.jsp" class="btn btn-secondary mb-3">Home</a>
+    <a href="${pageContext.request.contextPath}/addEmployee.jsp" class="btn btn-success mb-3 float-end">Add New Employee</a>
     <table class="table table-bordered table-striped text-white">
       <thead>
         <tr>
@@ -93,8 +69,8 @@
                   <td><%= rs.getString("designation") %></td>
                   <td><%= rs.getDouble("salary") %></td>
                   <td>
-                    <a href="EditEmployeeServlet?id=<%= rs.getInt("id") %>" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="DeleteEmployeeServlet?id=<%= rs.getInt("id") %>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this employee?');">Delete</a>
+                    <a href="${pageContext.request.contextPath}/EditEmployeeServlet?id=<%= rs.getInt("id") %>" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="${pageContext.request.contextPath}/DeleteEmployeeServlet?id=<%= rs.getInt("id") %>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this employee?');">Delete</a>
                   </td>
                 </tr>
       <%
