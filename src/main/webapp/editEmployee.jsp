@@ -50,7 +50,7 @@
 <body>
   <div class="container">
     <h2>Edit Employee</h2>
-    <form action="EditEmployeeServlet" method="post">
+    <form action="${pageContext.request.contextPath}/edit" method="post">
       <input type="hidden" name="id" value="${id}" />
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
@@ -72,7 +72,7 @@
         <div class="alert alert-danger">${error}</div>
       </c:if>
       <button type="submit" class="btn btn-primary">Update Employee</button>
-      <a href="employeeList.jsp" class="btn btn-secondary">Cancel</a>
+      <a href="${pageContext.request.contextPath}/employeeList.jsp" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
 </body>
