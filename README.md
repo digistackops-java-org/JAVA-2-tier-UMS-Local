@@ -72,7 +72,7 @@ Create employee DB
 ```
 CREATE DATABASE employeedb;
 ```
-Create the "appuser" user with password and gibe full access to employeeDb and its tables
+Create the "appuser" user with password and give full access to employeeDb and its tables
 ```
 CREATE USER appuser WITH PASSWORD 'P@55Word';
 ```
@@ -81,18 +81,32 @@ GRANT ALL PRIVILEGES ON DATABASE employeedb TO appuser;
 ```
 Switch to "employedb"
 ```
-\c employeedb
+\c employeedb;
 ```
 Create the employees table
 ```
-CREATE TABLE employees (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  designation VARCHAR(255) NOT NULL,
-  salary NUMERIC(12, 2) NOT NULL
+CREATE TABLE employee (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    designation VARCHAR(100) NOT NULL,
+    salary NUMERIC(10,2) NOT NULL
 );
 ```
+Grant all permissions on the employee table 
+
+```
+GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO appuser;
+```
+Grant usage on the public schema
+```
+GRANT USAGE ON SCHEMA public TO appuser;
+```
+Grant permissions to access sequences
+```
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO appuser;
+```
+
 Check table created or Not under "employedb"
 ```
 SELECT * FROM employees;
