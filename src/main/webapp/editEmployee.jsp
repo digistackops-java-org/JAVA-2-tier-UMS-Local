@@ -6,7 +6,6 @@
   <title>Edit Employee</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Same styling as addEmployee.jsp */
     body {
       background: linear-gradient(135deg, #71b7e6, #9b59b6);
       min-height: 100vh;
@@ -51,22 +50,22 @@
   <div class="container">
     <h2>Edit Employee</h2>
     <form action="${pageContext.request.contextPath}/edit" method="post">
-      <input type="hidden" name="id" value="${id}" />
+      <input type="hidden" name="id" value="${employee.id}" />
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" id="name" class="form-control" value="${name}" required>
+        <input type="text" name="name" id="name" class="form-control" value="${employee.name}" required>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" id="email" class="form-control" value="${email}" required>
+        <input type="email" name="email" id="email" class="form-control" value="${employee.email}" required>
       </div>
       <div class="mb-3">
         <label for="designation" class="form-label">Designation</label>
-        <input type="text" name="designation" id="designation" class="form-control" value="${designation}" required>
+        <input type="text" name="designation" id="designation" class="form-control" value="${employee.designation}" required>
       </div>
       <div class="mb-3">
         <label for="salary" class="form-label">Salary</label>
-        <input type="number" name="salary" id="salary" class="form-control" step="0.01" value="${salary}" required>
+        <input type="number" name="salary" id="salary" class="form-control" step="0.01" value="${employee.salary}" required>
       </div>
       <c:if test="${not empty error}">
         <div class="alert alert-danger">${error}</div>
