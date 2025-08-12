@@ -96,7 +96,7 @@ CREATE TABLE employee (
 Grant all permissions on the employee table 
 
 ```
-GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO appuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON employee TO appuser;
 ```
 Grant usage on the public schema
 ```
