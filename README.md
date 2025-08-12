@@ -169,8 +169,10 @@ sudo cp -r target/*.war /opt/tomcat/webapps
 
 ### Access Your App in Browser
 ```
-http://<AWS-Public-IP>:8080/employee
+http://<AWS-Public-IP>:8080/SSO
 ```
+<img width="668" height="319" alt="image" src="https://github.com/user-attachments/assets/36d5e632-8591-47b1-ba97-4804c21b47ef" />
+
 
 ### To Run the Test
 ```
