@@ -1,2 +1,9 @@
-# JAVA-2-tier-UMS-App
-Java 2-tier app with postgres DB
+```
+CREATE TABLE employees (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  designation VARCHAR(255) NOT NULL,
+  salary NUMERIC(12, 2) NOT NULL
+);
+```
