@@ -4,7 +4,7 @@
     http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sapsecopssolutions</groupId>
-  <artifactId>EmployeeSalaryTracker</artifactId>
+  <artifactId>employee</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
@@ -69,6 +69,6 @@
   </dependencies>
 
   <build>
-    <finalName>EmployeeSalaryTracker</finalName>
+    <finalName>employee</finalName>
   </build>
 </project>
