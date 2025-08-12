@@ -37,12 +37,17 @@ listen_addresses = '*'
 ```
 sudo vim /var/lib/pgsql/data/pg_hba.conf
 ```
+Edit IPV4 Local Connection Method from ident to md5 these lines 
+```
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+```
 ADD these lines 
 ```
 # Allow remote user connections from a single IP
 host    all             all             0.0.0.0/0          md5
 ```
-<img width="594" height="225" alt="image" src="https://github.com/user-attachments/assets/749cd77f-a0a9-40b0-a9ae-7b761e22d8f8" />
+<img width="572" height="68" alt="image" src="https://github.com/user-attachments/assets/73d36241-5e6c-4790-be9c-9e4ec3337805" />
 
 Restart postgressql DB
 ```
@@ -138,6 +143,13 @@ sudo git checkout 01-Local-setup-Dev
 ```
 mvn clean package
 ```
+If you get permission Issue
+
+```
+sudo chown -R ec2-user:ec2-user /home/ec2-user/JAVA-2-tier-UMS-App
+chmod u+w /home/ec2-user/JAVA-2-tier-UMS-App
+```
+
 ### Deploy these Artifact to Tomcat-Dev
 ```
 sudo cp -r target/*.war /opt/tomcat/webapps
