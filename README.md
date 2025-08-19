@@ -132,11 +132,12 @@ sudo yum install git -y
 ##### Clone the Repo
 
 ```
+cd /home/ec2-user/
 sudo git clone https://github.com/digistackops-java-org/JAVA-2-tier-UMS-Local.git
 ```
 ### Switch to Local-Setup Branch
 ```
-cd JAVA-2-tier-UMS-Local
+cd /home/ec2-user/JAVA-2-tier-UMS-Local
 sudo git checkout 01-Local-setup-Dev
 ```
 ### Edit your DB credentials in application.properties file
@@ -150,16 +151,16 @@ spring.datasource.username=<User-name>
 spring.datasource.password=<Password>
 spring.datasource.driver-class-name=org.postgresql.Driver
 ```
+If you get permission Issue
+
+```
+sudo chown -R ec2-user:ec2-user /home/ec2-user/JAVA-2-tier-UMS-Local
+chmod u+w /home/ec2-user/JAVA-2-tier-UMS-Local
+```
 
 ### Build the Artifact
 ```
 mvn clean package
-```
-If you get permission Issue
-
-```
-sudo chown -R ec2-user:ec2-user /home/ec2-user/JAVA-2-tier-UMS-App
-chmod u+w /home/ec2-user/JAVA-2-tier-UMS-App
 ```
 
 ### Deploy these Artifact to Tomcat-Dev
