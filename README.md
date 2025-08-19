@@ -132,11 +132,11 @@ sudo yum install git -y
 ##### Clone the Repo
 
 ```
-sudo git clone https://github.com/techizone-Small-Project-org/JAVA-2-tier-UMS-App.git
+sudo git clone https://github.com/digistackops-java-org/JAVA-2-tier-UMS-Local.git
 ```
 ### Switch to Local-Setup Branch
 ```
-cd JAVA-2-tier-UMS-App
+cd JAVA-2-tier-UMS-Local
 sudo git checkout 01-Local-setup-Dev
 ```
 ### Edit your DB credentials in application.properties file
