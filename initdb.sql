@@ -1,26 +1,23 @@
 -- Create database
-CREATE DATABASE mydb;
+CREATE DATABASE IF NOT EXISTS employeedb;
 
 -- Create user (if not exists)
-CREATE USER appuser WITH PASSWORD 'P@55Word';
+CREATE USER IF NOT EXISTS appuser WITH PASSWORD 'P@55Word';
 
 -- Grant privileges on the DB
-GRANT ALL PRIVILEGES ON DATABASE mydb TO appuser;
+GRANT ALL PRIVILEGES ON DATABASE employeedb TO appuser;
 
-\connect mydb;
+\connect employeedb;
 
 -- Create tables
-CREATE TABLE students (
+CREATE TABLE IF NOT EXISTS employee (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    course VARCHAR(50),
-    fees NUMERIC,
-    status VARCHAR(20)
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    designation VARCHAR(100) NOT NULL,
+    salary NUMERIC(10,2) NOT NULL
 );
 
--- Insert sample data
-INSERT INTO students (name, email, course, fees, status)
-VALUES 
-('Alice', 'alice@example.com', 'Math', 5000, 'paid'),
-('Bob', 'bob@example.com', 'Science', 4500, 'pending');
+GRANT SELECT, INSERT, UPDATE, DELETE ON employee TO appuser;
+GRANT USAGE ON SCHEMA public TO appuser;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO appuser;
