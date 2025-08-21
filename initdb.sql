@@ -21,3 +21,12 @@ CREATE TABLE IF NOT EXISTS employee (
 GRANT SELECT, INSERT, UPDATE, DELETE ON employee TO appuser;
 GRANT USAGE ON SCHEMA public TO appuser;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO appuser;
+
+
+-- Insert dummy employee data
+INSERT INTO employee (name, email, designation, salary) VALUES
+('Venkatesh', 'venkatesh@example.com', 'DevSecOps Engineer', 75000.00),
+('Chaitanya', 'chaitanya@example.com', 'Jr Devops Engineer', 68000.00),
+('Padol', 'padol@example.com', 'Sap Developer', 72000.00),
+('Ganesh', 'ganesh@example.com', 'Manager', 65000.00),
+('Pandu', 'pandu@example.com', 'System Analyst', 90000.00);
