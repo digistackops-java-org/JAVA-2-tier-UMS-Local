@@ -72,6 +72,7 @@ Step:2 ==> Execute your "init.sql" script for your Application DB setup
 cd backend
 psql -h <DB-Private-IP> -U postgres -P <Password> -f initdb.sql
 ```
+why We use postgres user HERE => because we just launch postgres DB so no other user in DB
 
 ## Refer "Tools_setup.md" for Installing Required Tools Before execute these steps
 
