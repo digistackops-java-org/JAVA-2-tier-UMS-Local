@@ -53,6 +53,41 @@ Restart postgressql DB
 ```
 sudo systemctl restart postgresql
 ```
+# DB-Tier Setup
+#### Create DB and User in database
+
+Switch to postgres User
+```
+sudo -i -u postgres
+```
+Login to DB promt
+```
+psql
+```
+Change the Passordward for postgres User
+
+```
+ALTER USER postgres WITH PASSWORD 'NewStrongPasswordHere';
+```
+
+```
+SELECT VERSION();
+```
+
+### Create one Databse Admin User for our DB
+Create DnB admin user (role) with login password
+```
+CREATE ROLE dbadmin WITH LOGIN PASSWORD 'Admin@123';
+```
+Grant all privileges on all databases
+```
+GRANT ALL PRIVILEGES ON DATABASE postgres TO dbadmin;
+```
+Grant ability to create new databases and roles (similar to WITH GRANT OPTION)
+```
+ALTER ROLE dbadmin CREATEDB CREATEROLE SUPERUSER;
+```
+
 
 
 # Application server Setup
@@ -70,7 +105,7 @@ Step:2 ==> Execute your "init.sql" script for your Application DB setup
 
 ```
 cd backend
-psql -h <DB-Private-IP> -U postgres -P <Password> -f initdb.sql
+psql -h <DB-Private-IP> -U dbadmin -P Admin@123 -f initdb.sql
 ```
 why We use postgres user HERE => because we just launch postgres DB so no other user in DB
 
