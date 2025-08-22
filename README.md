@@ -93,22 +93,6 @@ ALTER ROLE dbadmin CREATEDB CREATEROLE SUPERUSER;
 # Application server Setup
 ## Create "t2.micro" EC2 Instance and open port "8080" for Tomcat Applicaion Server
 
-## Setup your Application Database by executing "initdb.sql" script from Application-server
-
-Step:1 ==> install "MYSQL-Client" for communicate with MYSQL Database
-```
-sudo dnf update -y
-sudo dnf install -y postgresql16-client
-which postgresql-setup
-```
-Step:2 ==> Execute your "init.sql" script for your Application DB setup
-
-```
-cd backend
-psql -h <DB-Private-IP> -U dbadmin -P Admin@123 -f initdb.sql
-```
-why We use postgres user HERE => because we just launch postgres DB so no other user in DB
-
 ## Refer "Tools_setup.md" for Installing Required Tools Before execute these steps
 
 
@@ -127,6 +111,19 @@ sudo git clone https://github.com/digistackops-java-org/JAVA-2-tier-UMS-Local.gi
 ```
 cd /home/ec2-user/JAVA-2-tier-UMS-Local
 sudo git checkout 02-Local-setup-Prod
+```
+## Setup your Application Database by executing "initdb.sql" script from Application-server
+
+Step:1 ==> install "MYSQL-Client" for communicate with MYSQL Database
+```
+sudo dnf update -y
+sudo dnf install -y postgresql16
+which postgresql-setup
+```
+Step:2 ==> Execute your "init.sql" script for your Application DB setup
+
+```
+PGPASSWORD="Admin@123" psql -h 172.31.16.207 -U dbadmin -d postgres -f initdb.sql
 ```
 ### Edit your DB credentials in application.properties file
 ```
@@ -154,6 +151,7 @@ mvn clean package
 ### Deploy these Artifact to Tomcat-Dev
 ```
 sudo cp -r target/*.war /opt/tomcat/webapps
+sudo mv /opt/tomcat/webapps/SSO-1.0-SNAPSHOT.war SSO.war
 ```
 
 ### Access Your App in Browser
