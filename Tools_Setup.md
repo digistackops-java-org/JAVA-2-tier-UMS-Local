@@ -7,19 +7,14 @@ open port "8080" in Seaurity Group for TOMCAT
 ```
 # Tools Setup For the Project 
 
-####  Install GIT
-```
-sudo yum install git -y
-``` 
-
-## Install JAVA
+### Install JAVA
 ####  Installation of openJDK 17
 ```
 sudo dnf update -y
 sudo yum install java-17-amazon-corretto-devel -y
 ``` 
 
-## Install Maven
+### Install Maven
 ```
 sudo wget https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz
 sudo tar xzf apache-maven-3.9.11-bin.tar.gz -C /opt
@@ -39,4 +34,16 @@ export PATH=${M2_HOME}/bin:${PATH}
 sudo chmod +x /etc/profile.d/maven.sh
 source /etc/profile.d/maven.sh
 mvn -version
+```
+
+
+### Install Git
+```
+sudo yum install git docker -y
+```
+### Configure Docker
+```
+sudo systemctl start docker
+sudo usermod -aG docker ec2-user
+exit
 ```
