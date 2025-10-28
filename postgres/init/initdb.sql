@@ -19,5 +19,3 @@ INSERT INTO employee (name, email, designation, salary) VALUES
 ('Padol', 'padol@example.com', 'SAP Developer', 72000.00),
 ('Pandu', 'pandu@example.com', 'System Analyst', 90000.00),
 ('Ganesh', 'ganesh@example.com', 'Manager', 65000.00);
-
-SELECT * FROM employee;
