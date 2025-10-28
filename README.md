@@ -1,7 +1,4 @@
-# Database Setup
-## Create "t2.micro" EC2 Instance and open port "5432" for DB 
-
-## Install postgressql  DB
+## Build Image for  postgressql  DB
 ```
 sudo dnf update -y
 sudo dnf install -y postgresql16-server
