@@ -114,7 +114,7 @@ sudo git checkout 02-Local-setup-Prod
 ```
 ## Setup your Application Database by executing "initdb.sql" script from Application-server
 
-Step:1 ==> install "Postgresql-Client" for communicate with MYSQL Database
+Step:1 ==> install "MYSQL-Client" for communicate with MYSQL Database
 ```
 sudo dnf update -y
 sudo dnf install -y postgresql16
@@ -125,58 +125,33 @@ Step:2 ==> Execute your "init.sql" script for your Application DB setup
 ```
 PGPASSWORD="Admin@123" psql -h 172.31.16.207 -U dbadmin -d postgres -f initdb.sql
 ```
+### Edit your DB credentials in application.properties file
+```
+sudo vim src/main/resources/application.properties
+```
+Edit HERE your DB and Host Details
+```
+spring.datasource.url=jdbc:postgresql://<DB-Private-IP>:5432/<Your-DB-Name>
+spring.datasource.username=<User-name>
+spring.datasource.password=<Password>
+spring.datasource.driver-class-name=org.postgresql.Driver
+```
 If you get permission Issue
 
 ```
 sudo chown -R ec2-user:ec2-user /home/ec2-user/JAVA-2-tier-UMS-Local
 chmod u+w /home/ec2-user/JAVA-2-tier-UMS-Local
 ```
-# Create the Package
+
+### Build the Artifact
 ```
 mvn clean package
 ```
-Start Backend Application, for HA we use Linux service for Backend
-```
-sudo vim /etc/systemd/system/backend.service
-```
-```
-[Unit]
-Description=Student Spring Boot App
-After=network.target
 
-[Service]
-User=ec2-user
-WorkingDirectory=/app/JAVA-3-tier-UMS-Local/backend
-
-# Environment variables
-Environment=SERVER_PORT=8080
-Environment=DB_HOST=<DB-Private-IP>
-Environment=DB_PORT=5432
-Environment=DB_NAME=user-account
-Environment=DB_USER=appuser
-Environment=DB_PASSWORD=P@55Word
-Environment=CORS_ALLOWED_ORIGINS=http://<Frontend-IP>
-
-ExecStart=/usr/bin/java -jar /app/JAVA-3-tier-UMS-Local/backend/target/studentapp-0.0.1-SNAPSHOT.jar
-SuccessExitStatus=143
-Restart=always
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
+### Deploy these Artifact to Tomcat-Dev
 ```
-Enable the backens servive
-```
-sudo systemctl daemon-reload
-sudo systemctl enable backend
-sudo systemctl start backend
-sudo systemctl status backend
-```
-Why we pass Environmental Variables in "Backend.service" file why noy througj export Command or .env file
-Because our Application is JAVA, it will alredy packaged through maven, so exports and .env will take the Linux Environment variable But HERE we need to pass the Variable to the  MAven PAckage so we use Environment variables in Service file so it will pass to the java -jar while running the Package
-To check the Service Logs
-```
-journalctl -u backend.service
+sudo cp -r target/*.war /opt/tomcat/webapps
+sudo mv /opt/tomcat/webapps/SSO-1.0-SNAPSHOT.war SSO.war
 ```
 
 ### Access Your App in Browser
