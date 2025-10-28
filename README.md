@@ -8,20 +8,40 @@ sudo git clone https://github.com/digistackops-java-org/JAVA-2-tier-UMS-Local.gi
 cd /home/ec2-user/JAVA-2-tier-UMS-Local
 sudo git checkout 03-Docker-Setup
 ```
-# Build Docker Images
-
-## Build Image for  postgressql  DB
-cd 
+# Create network for our 2-Tier UMS Application
 ```
+docker network create ums-net
+```
+
+# Build Image for  postgressql  DB
+
+```
+cd /home/ec2-user/JAVA-2-tier-UMS-Local/postgres
 docker build -t sapsecops/2-tier-java:postgresv1 .
+```
+
+# Run postgresql Image
+```
+docker run -d \
+  --name ums-db \
+  --network ums-net \
+  -e POSTGRES_USER=dbadmin \
+  -e POSTGRES_PASSWORD=Admin@123 \
+  -p 5432:5432 \
+  -v pgdata:/var/lib/postgresql/data \
+  sapsecops/2-tier-java:postgresv1
+```
+### Check your Tables and dummy data created or Not
+```
+docker exec -it ums-db psql -U dbadmin -d employeedb -c "select * from employee;"
 ```
 
 ## Build Image for  Java Application  DB
 
 ### Before that we need to Edit your DB credentials in application.properties file
-cd java
+
 ```
-cd java
+cd /home/ec2-user/JAVA-2-tier-UMS-Local/java
 sudo vim src/main/resources/application.properties
 ```
 ```
@@ -48,23 +68,6 @@ mvn clean package
 docker build -t sapsecops/2-tier-java:javaV1 --build-arg WAR_FILE=target/SSO-1.0-SNAPSHOT.war .
 ```
 
-# Run the Docker Images
-
-## Run postgresql Image
-```
-docker run -d \
-  --name ums-db \
-  --network ums-net \
-  -e POSTGRES_USER=dbadmin \
-  -e POSTGRES_PASSWORD=Admin@123 \
-  -p 5432:5432 \
-  -v pgdata:/var/lib/postgresql/data \
-  sapsecops/2-tier-java:postgresv1
-```
-### Check your Tables and dummy data created or Not
-```
-docker exec -it ums-db psql -U dbadmin -d employeedb -c "select * from employee;"
-```
 
 ## Run JAVA Application Image
 ```
