@@ -15,8 +15,8 @@ COPY init/*.sql /docker-entrypoint-initdb.d/
 
 # (Optional) Override PostgreSQL configs for remote access, etc.
 # Uncomment these lines if you want to include your own configs
-# COPY config/postgresql.conf /etc/postgresql/postgresql.conf
-# COPY config/pg_hba.conf /etc/postgresql/pg_hba.conf
+COPY config/postgresql.conf /var/lib/pgsql/data/postgresql.conf
+COPY config/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
 
 # Expose the DB port
 EXPOSE 5432
