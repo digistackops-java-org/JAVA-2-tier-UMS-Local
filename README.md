@@ -151,7 +151,7 @@ mvn clean package
 ### Deploy these Artifact to Tomcat-Dev
 ```
 sudo cp -r target/*.war /opt/tomcat/webapps
-sudo mv /opt/tomcat/webapps/SSO-1.0-SNAPSHOT.war SSO.war
+sudo mv /opt/tomcat/webapps/SSO-1.0-SNAPSHOT.war /opt/tomcat/webapps/SSO.war
 ```
 
 ### Access Your App in Browser
